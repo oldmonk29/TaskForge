@@ -1,0 +1,8 @@
+Fix Google sign-in to use pop-up instead of redirect
+
+Replaces `signInWithRedirect` with `signInWithPopup` in `client/src/lib/firebase.ts` and updates `client/src/components/AuthModal.tsx` to handle the pop-up result, resolving the "accounts.google.com refused to connect" error.
+
+Replit-Commit-Author: Agent
+Replit-Commit-Session-Id: dcd4dd56-1e99-4397-a657-3bacb562a74a
+Replit-Commit-Checkpoint-Type: full_checkpoint
+Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/2ce7c648-74b4-4b7c-aec8-8a48f390508f/dcd4dd56-1e99-4397-a657-3bacb562a74a/T3NV7ls

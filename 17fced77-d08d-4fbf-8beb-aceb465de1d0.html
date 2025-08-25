@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSecure Academy - Premium Cybersecurity Training Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    'playfair': ['Playfair Display', 'serif'],
+                    'inter': ['Inter', 'sans-serif'],
+                },
+                colors: {
+                    'gold': {
+                        400: '#FBBF24',
+                        500: '#F59E0B',
+                        600: '#D97706',
+                        700: '#B45309'
+                    },
+                    'dark': {
+                        900: '#000000',
+                        800: '#111111',
+                        700: '#1A1A1A',
+                        600: '#2A2A2A'
+                    }
+                },
+                animation: {
+                    'fade-in': 'fadeIn 0.6s ease-in-out',
+                    'slide-up': 'slideUp 0.8s ease-out',
+                    'glow': 'glow 2s ease-in-out infinite alternate'
+                }
+            }
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+            to { box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+        }
+        .gold-glow:hover {
+            animation: glow 1s ease-in-out;
+        }
+        .carousel-scroll {
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .carousel-scroll::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-white font-inter overflow-x-hidden">
+
+    <!-- Navigation Header -->
+    <!-- @COMPONENT: NavigationHeader [fixed top navigation with logo, search, wallet, profile] -->
+    <nav class="fixed top-0 w-full z-50 bg-dark-900/95 backdrop-blur-lg border-b border-dark-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl font-playfair font-bold text-gold-400">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        CyberSecure Academy
+                    </div>
+                    <!-- Limited-Time Free Access Banner -->
+                    <div class="hidden md:flex items-center bg-gradient-to-r from-gold-600 to-gold-400 text-black px-3 py-1 rounded-full text-sm font-semibold animate-pulse">
+                        🎉 Limited-Time Free Access
+                    </div>
+                </div>
+
+                <!-- Search & User Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- Search -->
+                    <div class="hidden md:flex relative">
+                        <input type="text" placeholder="Search courses..." 
+                               class="bg-dark-700 border border-dark-600 rounded-lg px-4 py-2 w-64 focus:outline-none focus:border-gold-400 transition-colors">
+                        <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+
+                    <!-- Wallet Badge -->
+                    <div class="flex items-center bg-dark-700 border border-gold-400 rounded-lg px-3 py-2 space-x-2 gold-glow">
+                        <i class="fas fa-wallet text-gold-400"></i>
+                        <span class="font-semibold" data-bind="user.walletBalance">₹500.00</span>
+                    </div>
+
+                    <!-- Profile Menu -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 bg-dark-700 rounded-lg px-3 py-2 hover:bg-dark-600 transition-colors">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&h=40" 
+                                 alt="Profile" class="w-8 h-8 rounded-full">
+                            <span data-bind="user.name">John Doe</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: NavigationHeader -->
+
+    <!-- Main Content Container -->
+    <main class="pt-16">
+
+        <!-- Hero Section -->
+        <!-- @COMPONENT: HeroSection [featured content banner with video background] -->
+        <section class="relative h-screen flex items-center justify-center overflow-hidden">
+            <!-- Background video mockup with cybersecurity theme -->
+            <!-- A dramatic cybersecurity operations center with multiple screens showing network monitoring dashboards -->
+            <div class="absolute inset-0 bg-cover bg-center" 
+                 style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080');">
+            </div>
+
+            <!-- Hero Content -->
+            <div class="relative z-10 text-center max-w-4xl mx-auto px-4 animate-fade-in">
+                <h1 class="text-5xl md:text-7xl font-playfair font-bold mb-6 leading-tight">
+                    Master <span class="text-gold-400">Cybersecurity</span><br>
+                    Like Never Before
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto">
+                    Join India's premier cybersecurity training platform. Learn from experts, earn certificates, and secure your future in the digital world.
+                </p>
+                
+                <!-- Welcome Bonus CTA -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                    <button class="bg-gradient-to-r from-gold-600 to-gold-400 text-black px-8 py-4 rounded-lg font-bold text-lg hover:from-gold-500 hover:to-gold-300 transform hover:scale-105 transition-all shadow-lg gold-glow">
+                        <i class="fas fa-gift mr-2"></i>
+                        Claim ₹500 Welcome Bonus
+                    </button>
+                    <button class="border-2 border-gold-400 text-gold-400 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold-400 hover:text-black transition-colors">
+                        <i class="fas fa-play mr-2"></i>
+                        Watch Demo
+                    </button>
+                </div>
+
+                <!-- Free Access Notice -->
+                <div class="bg-dark-800/80 backdrop-blur border border-gold-400/50 rounded-xl p-6 max-w-md mx-auto">
+                    <i class="fas fa-clock text-gold-400 text-2xl mb-2"></i>
+                    <h3 class="font-semibold text-lg mb-2">Limited Time Offer</h3>
+                    <p class="text-sm text-gray-300">All premium content free for the next 90 days. No credit card required.</p>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i class="fas fa-chevron-down text-gold-400 text-2xl"></i>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: HeroSection -->
+
+        <!-- Dashboard Content Section -->
+        <section class="py-16 px-4 max-w-7xl mx-auto">
+
+            <!-- Trending Now Carousel -->
+            <!-- @COMPONENT: ContentCarousel [horizontal scrolling content cards] -->
+            <div class="mb-16 animate-slide-up">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-3xl font-playfair font-bold text-gold-400">Trending Now</h2>
+                    <button class="text-gold-400 hover:text-gold-300 font-semibold">View All <i class="fas fa-arrow-right ml-1"></i></button>
+                </div>
+                
+                <div class="carousel-scroll flex gap-6 overflow-x-auto pb-4">
+                    <!-- @MAP: trendingContent.map(content => ( -->
+                    <!-- Cybersecurity professional analyzing network security threats on multiple monitors -->
+                    <div class="flex-none w-80 bg-dark-800 rounded-xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=320&h=180" 
+                                 alt="Advanced Threat Detection" class="w-full h-48 object-cover">
+                            <!-- Premium Badge -->
+                            <div class="absolute top-3 left-3 bg-gold-400 text-black px-2 py-1 rounded text-xs font-bold">
+                                PREMIUM
+                            </div>
+                            <!-- Duration -->
+                            <div class="absolute bottom-3 right-3 bg-black/80 px-2 py-1 rounded text-sm">
+                                4h 32m
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2" data-mock="true">Advanced Threat Detection & Response</h3>
+                            <p class="text-gray-400 text-sm mb-3" data-mock="true">Master the latest techniques in identifying and neutralizing cyber threats in real-time environments.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <!-- Expert cybersecurity instructor explaining complex security concepts -->
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=32&h=32" 
+                                         alt="Instructor" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-300" data-mock="true">Dr. Sarah Chen</span>
+                                </div>
+                                <div class="text-gold-400 text-sm font-semibold">FREE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Network security visualization with firewalls and intrusion detection systems -->
+                    <div class="flex-none w-80 bg-dark-800 rounded-xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&auto=format&fit=crop&w=320&h=180" 
+                                 alt="Network Security Fundamentals" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3 bg-gold-400 text-black px-2 py-1 rounded text-xs font-bold">
+                                PREMIUM
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-black/80 px-2 py-1 rounded text-sm">
+                                6h 15m
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2" data-mock="true">Network Security Fundamentals</h3>
+                            <p class="text-gray-400 text-sm mb-3" data-mock="true">Build a strong foundation in network security principles and practical implementation strategies.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <!-- Professional security expert teaching network protocols -->
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=32&h=32" 
+                                         alt="Instructor" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-300" data-mock="true">Mike Rodriguez</span>
+                                </div>
+                                <div class="text-gold-400 text-sm font-semibold">FREE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ethical hacking laboratory with penetration testing tools -->
+                    <div class="flex-none w-80 bg-dark-800 rounded-xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=320&h=180" 
+                                 alt="Ethical Hacking Masterclass" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3 bg-gradient-to-r from-red-600 to-gold-400 text-white px-2 py-1 rounded text-xs font-bold">
+                                HOT
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-black/80 px-2 py-1 rounded text-sm">
+                                8h 45m
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2" data-mock="true">Ethical Hacking Masterclass</h3>
+                            <p class="text-gray-400 text-sm mb-3" data-mock="true">Learn penetration testing and ethical hacking techniques used by security professionals worldwide.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <!-- Experienced penetration testing expert -->
+                                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&auto=format&fit=crop&w=32&h=32" 
+                                         alt="Instructor" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-300" data-mock="true">Alex Kumar</span>
+                                </div>
+                                <div class="text-gold-400 text-sm font-semibold">FREE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Digital forensics investigation with computer evidence analysis -->
+                    <div class="flex-none w-80 bg-dark-800 rounded-xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=320&h=180" 
+                                 alt="Digital Forensics" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3 bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">
+                                NEW
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-black/80 px-2 py-1 rounded text-sm">
+                                5h 20m
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2" data-mock="true">Digital Forensics Investigation</h3>
+                            <p class="text-gray-400 text-sm mb-3" data-mock="true">Master digital evidence collection and analysis techniques for cybercrime investigation.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <!-- Digital forensics specialist analyzing cyber evidence -->
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=32&h=32" 
+                                         alt="Instructor" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-300" data-mock="true">Dr. Lisa Wang</span>
+                                </div>
+                                <div class="text-gold-400 text-sm font-semibold">FREE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- @END_MAP )) -->
+                </div>
+            </div>
+            <!-- @END_COMPONENT: ContentCarousel -->
+
+            <!-- Featured Courses -->
+            <div class="mb-16 animate-slide-up">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-3xl font-playfair font-bold text-gold-400">Featured Courses</h2>
+                    <button class="text-gold-400 hover:text-gold-300 font-semibold">View All <i class="fas fa-arrow-right ml-1"></i></button>
+                </div>
+                
+                <div class="carousel-scroll flex gap-6 overflow-x-auto pb-4">
+                    <!-- Cloud security architecture with AWS and Azure protection strategies -->
+                    <div class="flex-none w-80 bg-dark-800 rounded-xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=320&h=180" 
+                                 alt="Cloud Security Architecture" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3 bg-purple-600 text-white px-2 py-1 rounded text-xs font-bold">
+                                CERTIFICATE
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-black/80 px-2 py-1 rounded text-sm">
+                                7h 30m
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2" data-mock="true">Cloud Security Architecture</h3>
+                            <p class="text-gray-400 text-sm mb-3" data-mock="true">Secure cloud infrastructures across AWS, Azure, and GCP with industry best practices.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <!-- Cloud security architect with enterprise experience -->
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=32&h=32" 
+                                         alt="Instructor" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-300" data-mock="true">David Park</span>
+                                </div>
+                                <div class="text-gold-400 text-sm font-semibold">FREE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Incident response team coordinating cyber attack mitigation -->
+                    <div class="flex-none w-80 bg-dark-800 rounded-xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=320&h=180" 
+                                 alt="Incident Response Planning" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3 bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">
+                                CRITICAL
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-black/80 px-2 py-1 rounded text-sm">
+                                4h 15m
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2" data-mock="true">Incident Response & Crisis Management</h3>
+                            <p class="text-gray-400 text-sm mb-3" data-mock="true">Build effective incident response teams and manage cybersecurity crises professionally.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <!-- Incident response team leader with crisis management expertise -->
+                                    <img src="https://pixabay.com/get/g42308b090475c3fa18b15e864a0aff057fbb3ce2d731b2f327d786b25d9cae1e629f577851f6fb75f95834e794b03bdee59ae203bdcb8ae558556e9179bf95de_1280.jpg" 
+                                         alt="Instructor" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-300" data-mock="true">Rachel Green</span>
+                                </div>
+                                <div class="text-gold-400 text-sm font-semibold">FREE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blockchain security audit showing cryptocurrency protection methods -->
+                    <div class="flex-none w-80 bg-dark-800 rounded-xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=320&h=180" 
+                                 alt="Blockchain Security" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3 bg-yellow-600 text-white px-2 py-1 rounded text-xs font-bold">
+                                TRENDING
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-black/80 px-2 py-1 rounded text-sm">
+                                6h 00m
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2" data-mock="true">Blockchain & Cryptocurrency Security</h3>
+                            <p class="text-gray-400 text-sm mb-3" data-mock="true">Secure blockchain networks and protect cryptocurrency infrastructure from attacks.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <!-- Blockchain security specialist with cryptocurrency expertise -->
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=32&h=32" 
+                                         alt="Instructor" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-300" data-mock="true">Emma Thompson</span>
+                                </div>
+                                <div class="text-gold-400 text-sm font-semibold">FREE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile device security testing with smartphone vulnerability assessment -->
+                    <div class="flex-none w-80 bg-dark-800 rounded-xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=320&h=180" 
+                                 alt="Mobile Security" class="w-full h-48 object-cover">
+                            <div class="absolute top-3 left-3 bg-green-600 text-white px-2 py-1 rounded text-xs font-bold">
+                                HANDS-ON
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-black/80 px-2 py-1 rounded text-sm">
+                                3h 45m
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2" data-mock="true">Mobile Application Security</h3>
+                            <p class="text-gray-400 text-sm mb-3" data-mock="true">Secure mobile applications and protect against mobile-specific attack vectors.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <!-- Mobile security researcher analyzing smartphone vulnerabilities -->
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=32&h=32" 
+                                         alt="Instructor" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-300" data-mock="true">James Wilson</span>
+                                </div>
+                                <div class="text-gold-400 text-sm font-semibold">FREE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Video Player Section (Sample Page) -->
+        <!-- @COMPONENT: VideoPlayerPage [dedicated video streaming interface] -->
+        <section class="py-16 bg-dark-800 border-t border-dark-600">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Video Player Column -->
+                    <div class="lg:col-span-2">
+                        <!-- Video Player -->
+                        <div class="relative bg-black rounded-xl overflow-hidden mb-6">
+                            <!-- Cybersecurity expert explaining advanced threat detection techniques in a modern lab -->
+                            <div class="aspect-video bg-cover bg-center relative" 
+                                 style="background-image: url('https://images.unsplash.com/photo-1551808525-51a94da548ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=675');">
+                                
+                                <!-- Video Player Controls -->
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <button class="w-20 h-20 bg-gold-400/90 rounded-full flex items-center justify-center text-black text-2xl hover:bg-gold-300 transition-colors gold-glow">
+                                        <i class="fas fa-play ml-1"></i>
+                                    </button>
+                                </div>
+
+                                <!-- User Watermark (Anti-piracy) -->
+                                <div class="absolute top-4 right-4 bg-black/60 px-2 py-1 rounded text-sm" data-bind="user.email">
+                                    john.doe@email.com
+                                </div>
+
+                                <!-- Progress Bar -->
+                                <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-4">
+                                    <div class="flex items-center space-x-4 text-sm mb-2">
+                                        <span>12:34</span>
+                                        <div class="flex-1 bg-dark-600 h-1 rounded">
+                                            <div class="bg-gold-400 h-1 rounded" style="width: 35%;"></div>
+                                        </div>
+                                        <span>35:20</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-4">
+                                            <i class="fas fa-play"></i>
+                                            <i class="fas fa-volume-up"></i>
+                                            <div class="w-20 bg-dark-600 h-1 rounded">
+                                                <div class="bg-white h-1 rounded" style="width: 70%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <i class="fas fa-cog"></i>
+                                            <i class="fas fa-expand"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Details -->
+                        <div class="mb-6">
+                            <h1 class="text-2xl font-bold mb-3" data-mock="true">Advanced Threat Detection & Response</h1>
+                            <div class="flex items-center space-x-4 text-gray-400 text-sm mb-4">
+                                <span>125K views</span>
+                                <span>•</span>
+                                <span>2 days ago</span>
+                                <span>•</span>
+                                <span>4h 32m duration</span>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="flex items-center space-x-4 mb-6">
+                                <button class="flex items-center space-x-2 bg-dark-700 px-4 py-2 rounded-lg hover:bg-dark-600 transition-colors">
+                                    <i class="fas fa-thumbs-up text-gold-400"></i>
+                                    <span>1.2K</span>
+                                </button>
+                                <button class="flex items-center space-x-2 bg-dark-700 px-4 py-2 rounded-lg hover:bg-dark-600 transition-colors">
+                                    <i class="fas fa-share"></i>
+                                    <span>Share</span>
+                                </button>
+                                <button class="flex items-center space-x-2 bg-dark-700 px-4 py-2 rounded-lg hover:bg-dark-600 transition-colors">
+                                    <i class="fas fa-bookmark"></i>
+                                    <span>Save</span>
+                                </button>
+                                <button class="flex items-center space-x-2 bg-gold-400 text-black px-4 py-2 rounded-lg hover:bg-gold-300 transition-colors font-semibold">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>Get Certificate</span>
+                                </button>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="bg-dark-700 rounded-xl p-6">
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <!-- Cybersecurity expert with industry certifications -->
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&h=64" 
+                                         alt="Dr. Sarah Chen" class="w-16 h-16 rounded-full">
+                                    <div>
+                                        <h3 class="font-semibold text-lg" data-mock="true">Dr. Sarah Chen</h3>
+                                        <p class="text-gray-400 text-sm" data-mock="true">Senior Cybersecurity Consultant • CISSP, CISA</p>
+                                        <p class="text-gold-400 text-sm font-semibold">142K subscribers</p>
+                                    </div>
+                                    <button class="ml-auto bg-gold-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-gold-300 transition-colors">
+                                        Subscribe
+                                    </button>
+                                </div>
+                                
+                                <div class="text-gray-300">
+                                    <p class="mb-4" data-mock="true">
+                                        In this comprehensive course, you'll master advanced threat detection and incident response techniques used by enterprise security teams worldwide. Learn to identify sophisticated attack vectors, analyze security incidents, and implement effective countermeasures.
+                                    </p>
+                                    <p class="mb-4" data-mock="true">
+                                        <strong>What you'll learn:</strong><br>
+                                        • Advanced persistent threat (APT) identification<br>
+                                        • SIEM configuration and log analysis<br>
+                                        • Incident response playbook development<br>
+                                        • Threat hunting methodologies<br>
+                                        • Digital forensics fundamentals
+                                    </p>
+                                    <button class="text-gold-400 hover:text-gold-300 font-semibold text-sm">
+                                        Show more <i class="fas fa-chevron-down ml-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Ad Placement Under Description -->
+                            <!-- @COMPONENT: AdSlot [advertisement placement with premium styling] -->
+                            <div class="mt-6 bg-gradient-to-r from-dark-700 to-dark-600 border border-gold-400/30 rounded-xl p-6" data-mock="true">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs text-gray-400 uppercase tracking-wide">Sponsored Content</span>
+                                    <button class="text-gray-400 hover:text-gray-300 text-xs">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <!-- Cybersecurity software company advertisement for enterprise security solutions -->
+                                <div class="flex items-center space-x-4">
+                                    <img src="https://pixabay.com/get/gc7ca3070789b3783d65c2a4b3ac56bcb1591036d6039629b681034da53fbe07ea0c356afafa0ca9b41df2d35b6b82b3be7e7bff72e865f558ac4bd4405838c82_1280.jpg" 
+                                         alt="CyberShield Pro" class="w-24 h-16 rounded-lg object-cover">
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gold-400 mb-1">CyberShield Pro Enterprise</h4>
+                                        <p class="text-sm text-gray-300 mb-2">Advanced threat protection for enterprise networks. Try free for 30 days.</p>
+                                        <button class="bg-gold-400 text-black px-4 py-1 rounded text-sm font-semibold hover:bg-gold-300 transition-colors">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- @END_COMPONENT: AdSlot -->
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="lg:col-span-1">
+                        <!-- Next Up -->
+                        <div class="bg-dark-700 rounded-xl p-6 mb-6">
+                            <h3 class="font-semibold text-lg mb-4">Next Up</h3>
+                            <div class="space-y-4">
+                                <!-- Network security fundamentals lesson preview -->
+                                <div class="flex space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=80" 
+                                         alt="Next Video" class="w-24 h-16 rounded-lg object-cover">
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-sm mb-1" data-mock="true">Network Security Fundamentals</h4>
+                                        <p class="text-xs text-gray-400 mb-1" data-mock="true">Mike Rodriguez</p>
+                                        <p class="text-xs text-gray-500">6h 15m</p>
+                                    </div>
+                                </div>
+
+                                <!-- Ethical hacking techniques demonstration -->
+                                <div class="flex space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=80" 
+                                         alt="Next Video" class="w-24 h-16 rounded-lg object-cover">
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-sm mb-1" data-mock="true">Ethical Hacking Masterclass</h4>
+                                        <p class="text-xs text-gray-400 mb-1" data-mock="true">Alex Kumar</p>
+                                        <p class="text-xs text-gray-500">8h 45m</p>
+                                    </div>
+                                </div>
+
+                                <!-- Digital forensics investigation training -->
+                                <div class="flex space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=80" 
+                                         alt="Next Video" class="w-24 h-16 rounded-lg object-cover">
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-sm mb-1" data-mock="true">Digital Forensics Investigation</h4>
+                                        <p class="text-xs text-gray-400 mb-1" data-mock="true">Dr. Lisa Wang</p>
+                                        <p class="text-xs text-gray-500">5h 20m</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Progress -->
+                        <div class="bg-dark-700 rounded-xl p-6 mb-6">
+                            <h3 class="font-semibold text-lg mb-4">Course Progress</h3>
+                            <div class="mb-4">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Completed</span>
+                                    <span class="text-gold-400 font-semibold">35%</span>
+                                </div>
+                                <div class="bg-dark-600 h-2 rounded-full">
+                                    <div class="bg-gradient-to-r from-gold-600 to-gold-400 h-2 rounded-full" style="width: 35%;"></div>
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-400">
+                                <p>4 of 12 lessons completed</p>
+                                <p class="mt-2">~3h remaining</p>
+                            </div>
+                        </div>
+
+                        <!-- Your Certificates -->
+                        <div class="bg-dark-700 rounded-xl p-6">
+                            <h3 class="font-semibold text-lg mb-4">Your Certificates</h3>
+                            <div class="space-y-3">
+                                <div class="bg-gradient-to-r from-gold-600/20 to-gold-400/20 border border-gold-400/50 rounded-lg p-4">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-certificate text-gold-400 text-2xl"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-sm" data-mock="true">Network Security Fundamentals</h4>
+                                            <p class="text-xs text-gray-400">Issued: Dec 15, 2023</p>
+                                            <p class="text-xs text-gold-400 font-semibold">Certificate #CSA-2023-001</p>
+                                        </div>
+                                    </div>
+                                    <button class="w-full mt-3 bg-gold-400 text-black py-2 rounded font-semibold text-sm hover:bg-gold-300 transition-colors">
+                                        Download PDF
+                                    </button>
+                                </div>
+
+                                <div class="border-2 border-dashed border-gray-600 rounded-lg p-4 text-center">
+                                    <i class="fas fa-lock text-gray-500 text-xl mb-2"></i>
+                                    <p class="text-sm text-gray-400" data-mock="true">Complete this course to earn your certificate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: VideoPlayerPage -->
+
+        <!-- Subscription Tiers Section -->
+        <!-- @COMPONENT: SubscriptionPlans [tiered pricing with wallet redemption] -->
+        <section class="py-20 bg-dark-900 border-t border-dark-600">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-playfair font-bold mb-4">Choose Your <span class="text-gold-400">Learning Path</span></h2>
+                    <p class="text-xl text-gray-300 mb-8">Unlock premium content and accelerate your cybersecurity career</p>
+                    
+                    <!-- Phase Toggle Notice -->
+                    <div class="inline-flex items-center bg-dark-800 border border-gold-400/50 rounded-full px-6 py-3 mb-8">
+                        <i class="fas fa-info-circle text-gold-400 mr-2"></i>
+                        <span class="text-sm">Use your ₹500 welcome bonus towards any plan</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Freemium Tier -->
+                    <div class="bg-dark-800 border border-dark-600 rounded-2xl p-8 relative">
+                        <div class="text-center mb-8">
+                            <h3 class="text-2xl font-bold mb-2">Freemium</h3>
+                            <div class="text-4xl font-bold mb-4">
+                                <span class="text-gold-400">₹59</span>
+                                <span class="text-lg font-normal text-gray-400">/month</span>
+                            </div>
+                            <p class="text-gray-400">Ad-supported access to basic content</p>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-400"></i>
+                                <span class="text-sm">Basic course library access</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-400"></i>
+                                <span class="text-sm">Community forum access</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-400"></i>
+                                <span class="text-sm">Mobile app access</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-times text-red-400"></i>
+                                <span class="text-sm text-gray-500">No certificates</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-times text-red-400"></i>
+                                <span class="text-sm text-gray-500">Premium content locked</span>
+                            </li>
+                        </ul>
+
+                        <button class="w-full bg-dark-700 border border-dark-600 text-white py-3 rounded-lg font-semibold hover:border-gold-400 transition-all">
+                            <span class="line-through text-gray-400">₹59</span>
+                            <span class="text-gold-400 ml-2">FREE with bonus!</span>
+                        </button>
+                    </div>
+
+                    <!-- Premium Tier (Most Popular) -->
+                    <div class="bg-dark-800 border-2 border-gold-400 rounded-2xl p-8 relative transform scale-105">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-gold-600 to-gold-400 text-black px-6 py-2 rounded-full text-sm font-bold">
+                            MOST POPULAR
+                        </div>
+                        
+                        <div class="text-center mb-8">
+                            <h3 class="text-2xl font-bold mb-2">Premium</h3>
+                            <div class="text-4xl font-bold mb-4">
+                                <span class="text-gold-400">₹500</span>
+                                <span class="text-lg font-normal text-gray-400">/month</span>
+                            </div>
+                            <p class="text-gray-400">Full access + certifications</p>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">All premium course content</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">Ad-free streaming experience</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">Downloadable course materials</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">Official course certificates</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">Hands-on lab exercises</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">Priority support</span>
+                            </li>
+                        </ul>
+
+                        <button class="w-full bg-gradient-to-r from-gold-600 to-gold-400 text-black py-3 rounded-lg font-bold hover:from-gold-500 hover:to-gold-300 transition-all gold-glow">
+                            <span class="line-through">₹500</span>
+                            <span class="ml-2">FREE with bonus!</span>
+                        </button>
+                    </div>
+
+                    <!-- Expert Advisory Tier -->
+                    <div class="bg-dark-800 border border-dark-600 rounded-2xl p-8 relative">
+                        <div class="text-center mb-8">
+                            <h3 class="text-2xl font-bold mb-2">Expert Advisory</h3>
+                            <div class="text-4xl font-bold mb-4">
+                                <span class="text-gold-400">₹999</span>
+                                <span class="text-lg font-normal text-gray-400">/month</span>
+                            </div>
+                            <p class="text-gray-400">1-on-1 mentorship included</p>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">Everything in Premium</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">1-on-1 expert consultations</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">Career guidance sessions</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">Resume & portfolio review</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">Industry networking access</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-gold-400"></i>
+                                <span class="text-sm">Job placement assistance</span>
+                            </li>
+                        </ul>
+
+                        <button class="w-full bg-dark-700 border border-gold-400 text-gold-400 py-3 rounded-lg font-semibold hover:bg-gold-400 hover:text-black transition-all">
+                            ₹499 after bonus
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Wallet Redemption Notice -->
+                <div class="text-center mt-12">
+                    <div class="inline-flex items-center bg-gradient-to-r from-gold-600/20 to-gold-400/20 border border-gold-400/50 rounded-xl px-8 py-4">
+                        <i class="fas fa-wallet text-gold-400 text-2xl mr-4"></i>
+                        <div class="text-left">
+                            <h4 class="font-semibold text-lg">Your Wallet Balance: <span class="text-gold-400">₹500.00</span></h4>
+                            <p class="text-sm text-gray-300">Welcome bonus automatically applied at checkout</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: SubscriptionPlans -->
+
+        <!-- Wallet & Account Section -->
+        <!-- @COMPONENT: WalletDashboard [transaction history and balance management] -->
+        <section class="py-16 bg-dark-800 border-t border-dark-600">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-playfair font-bold mb-4">Your <span class="text-gold-400">Digital Wallet</span></h2>
+                    <p class="text-gray-300">Manage your balance and track transactions</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <!-- Wallet Balance Card -->
+                    <div class="bg-gradient-to-br from-gold-600 to-gold-400 rounded-2xl p-8 text-black relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-black/10 rounded-full translate-y-12 -translate-x-12"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-xl font-bold">Wallet Balance</h3>
+                                <i class="fas fa-wallet text-2xl"></i>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="text-4xl font-bold mb-2" data-bind="user.walletBalance">₹500.00</div>
+                                <p class="text-sm opacity-80">Available for purchases</p>
+                            </div>
+
+                            <div class="flex space-x-3">
+                                <button class="bg-black/20 backdrop-blur px-4 py-2 rounded-lg font-semibold text-sm hover:bg-black/30 transition-colors">
+                                    Add Funds
+                                </button>
+                                <button class="bg-white/20 backdrop-blur px-4 py-2 rounded-lg font-semibold text-sm hover:bg-white/30 transition-colors">
+                                    Transfer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="space-y-4">
+                        <div class="bg-dark-700 rounded-xl p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-semibold mb-1">Courses Purchased</h4>
+                                    <div class="text-2xl font-bold text-gold-400">0</div>
+                                </div>
+                                <i class="fas fa-graduation-cap text-3xl text-gray-600"></i>
+                            </div>
+                        </div>
+
+                        <div class="bg-dark-700 rounded-xl p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-semibold mb-1">Certificates Earned</h4>
+                                    <div class="text-2xl font-bold text-gold-400">1</div>
+                                </div>
+                                <i class="fas fa-certificate text-3xl text-gray-600"></i>
+                            </div>
+                        </div>
+
+                        <div class="bg-dark-700 rounded-xl p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-semibold mb-1">Learning Streak</h4>
+                                    <div class="text-2xl font-bold text-gold-400">7 days</div>
+                                </div>
+                                <i class="fas fa-fire text-3xl text-orange-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaction History -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold mb-6">Recent Transactions</h3>
+                    <div class="bg-dark-700 rounded-xl overflow-hidden">
+                        <div class="divide-y divide-dark-600">
+                            <!-- @MAP: transactions.map(transaction => ( -->
+                            <div class="p-6 flex items-center justify-between">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-gift text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold" data-mock="true">Welcome Bonus</h4>
+                                        <p class="text-sm text-gray-400" data-mock="true">Signup reward credited</p>
+                                        <p class="text-xs text-gray-500">Dec 15, 2023 • 2:30 PM</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-semibold text-green-400">+₹500.00</div>
+                                    <div class="text-xs text-gray-400">BONUS</div>
+                                </div>
+                            </div>
+
+                            <div class="p-6 flex items-center justify-between opacity-50">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-shopping-cart text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold" data-mock="true">Course Purchase</h4>
+                                        <p class="text-sm text-gray-400" data-mock="true">Network Security Fundamentals</p>
+                                        <p class="text-xs text-gray-500">Pending...</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-semibold text-gray-400">-₹0.00</div>
+                                    <div class="text-xs text-gray-400">PENDING</div>
+                                </div>
+                            </div>
+                            <!-- @END_MAP )) -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: WalletDashboard -->
+
+        <!-- Admin Panel Preview -->
+        <!-- @COMPONENT: AdminDashboard [content and ads management interface] -->
+        <section class="py-16 bg-dark-900 border-t border-dark-600">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-playfair font-bold mb-4">Admin <span class="text-gold-400">Dashboard</span></h2>
+                    <p class="text-gray-300">Content and platform management</p>
+                </div>
+
+                <!-- Admin Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+                    <div class="bg-dark-800 rounded-xl p-6 border border-dark-600">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold text-gray-300">Total Users</h3>
+                            <i class="fas fa-users text-blue-400"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-blue-400">12,847</div>
+                        <div class="text-sm text-green-400 mt-2">+8.3% this month</div>
+                    </div>
+
+                    <div class="bg-dark-800 rounded-xl p-6 border border-dark-600">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold text-gray-300">Active Courses</h3>
+                            <i class="fas fa-play-circle text-gold-400"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-gold-400">28</div>
+                        <div class="text-sm text-green-400 mt-2">+3 this week</div>
+                    </div>
+
+                    <div class="bg-dark-800 rounded-xl p-6 border border-dark-600">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold text-gray-300">Revenue</h3>
+                            <i class="fas fa-rupee-sign text-green-400"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-green-400">₹2,43,580</div>
+                        <div class="text-sm text-green-400 mt-2">+12.5% this month</div>
+                    </div>
+
+                    <div class="bg-dark-800 rounded-xl p-6 border border-dark-600">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold text-gray-300">Certificates Issued</h3>
+                            <i class="fas fa-certificate text-purple-400"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-purple-400">1,847</div>
+                        <div class="text-sm text-green-400 mt-2">+15.2% this month</div>
+                    </div>
+                </div>
+
+                <!-- Content Management Table -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <!-- Content Management -->
+                    <div class="bg-dark-800 rounded-xl overflow-hidden">
+                        <div class="p-6 border-b border-dark-600">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-bold">Content Management</h3>
+                                <button class="bg-gold-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-gold-300 transition-colors text-sm">
+                                    <i class="fas fa-plus mr-2"></i>Add Course
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="divide-y divide-dark-600">
+                            <div class="p-4 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <!-- Course thumbnail for threat detection training -->
+                                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=48&h=48" 
+                                         alt="Course" class="w-12 h-12 rounded-lg object-cover">
+                                    <div>
+                                        <h4 class="font-semibold text-sm" data-mock="true">Advanced Threat Detection</h4>
+                                        <p class="text-xs text-gray-400">Published • 125K views</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-green-600 text-white px-2 py-1 rounded text-xs">ACTIVE</span>
+                                    <button class="text-gray-400 hover:text-white">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <!-- Network security course preview image -->
+                                    <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&auto=format&fit=crop&w=48&h=48" 
+                                         alt="Course" class="w-12 h-12 rounded-lg object-cover">
+                                    <div>
+                                        <h4 class="font-semibold text-sm" data-mock="true">Network Security Fundamentals</h4>
+                                        <p class="text-xs text-gray-400">Published • 89K views</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-green-600 text-white px-2 py-1 rounded text-xs">ACTIVE</span>
+                                    <button class="text-gray-400 hover:text-white">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <!-- Ethical hacking demonstration setup -->
+                                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=48&h=48" 
+                                         alt="Course" class="w-12 h-12 rounded-lg object-cover">
+                                    <div>
+                                        <h4 class="font-semibold text-sm" data-mock="true">Ethical Hacking Masterclass</h4>
+                                        <p class="text-xs text-gray-400">Draft • 0 views</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-yellow-600 text-white px-2 py-1 rounded text-xs">DRAFT</span>
+                                    <button class="text-gray-400 hover:text-white">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ads Management -->
+                    <div class="bg-dark-800 rounded-xl overflow-hidden">
+                        <div class="p-6 border-b border-dark-600">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-bold">Ad Management</h3>
+                                <button class="bg-gold-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-gold-300 transition-colors text-sm">
+                                    <i class="fas fa-plus mr-2"></i>New Ad
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="divide-y divide-dark-600">
+                            <div class="p-4 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <!-- Cybersecurity software advertisement -->
+                                    <img src="https://pixabay.com/get/ga6f7e49d6fc416d7322a377405dfcd15afe8522916851a5a2b6c1e493e43ec49dd75e758424359df4cf1c24439e6aa6811fd277b11f9a94402ac2dfcbb8cd2f9_1280.jpg" 
+                                         alt="Ad" class="w-12 h-12 rounded-lg object-cover">
+                                    <div>
+                                        <h4 class="font-semibold text-sm" data-mock="true">CyberShield Pro Enterprise</h4>
+                                        <p class="text-xs text-gray-400">below_description • 2.3K clicks</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-green-600 text-white px-2 py-1 rounded text-xs">ACTIVE</span>
+                                    <button class="text-gray-400 hover:text-white">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <!-- Security conference event promotion -->
+                                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&auto=format&fit=crop&w=48&h=48" 
+                                         alt="Ad" class="w-12 h-12 rounded-lg object-cover">
+                                    <div>
+                                        <h4 class="font-semibold text-sm" data-mock="true">CyberCon 2024</h4>
+                                        <p class="text-xs text-gray-400">banner • 1.8K clicks</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-green-600 text-white px-2 py-1 rounded text-xs">ACTIVE</span>
+                                    <button class="text-gray-400 hover:text-white">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <!-- Penetration testing tools advertisement -->
+                                    <img src="https://pixabay.com/get/gc2b294fdc37f5706eda2b0d3b24a151456be316c303831c89e10f70b766ef9513ebb135b0cc4d0b9da81aea270c3ab46642ee1e809988b239a761f9ecdee3b8f_1280.jpg" 
+                                         alt="Ad" class="w-12 h-12 rounded-lg object-cover">
+                                    <div>
+                                        <h4 class="font-semibold text-sm" data-mock="true">PenTest Tools Suite</h4>
+                                        <p class="text-xs text-gray-400">below_description • Scheduled</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-600 text-white px-2 py-1 rounded text-xs">SCHEDULED</span>
+                                    <button class="text-gray-400 hover:text-white">
+                                        <i class="fas fa-calendar"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: AdminDashboard -->
+
+        <!-- Authentication Modal (Hidden by default) -->
+        <!-- @COMPONENT: AuthModal [Firebase authentication interface] -->
+        <div id="authModal" class="hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div class="bg-dark-800 rounded-2xl p-8 w-full max-w-md border border-dark-600">
+                <div class="text-center mb-8">
+                    <i class="fas fa-shield-alt text-gold-400 text-4xl mb-4"></i>
+                    <h2 class="text-2xl font-playfair font-bold mb-2">Join CyberSecure Academy</h2>
+                    <p class="text-gray-400">Start your cybersecurity journey today</p>
+                </div>
+
+                <!-- Social Login -->
+                <div class="space-y-4 mb-6">
+                    <button class="w-full flex items-center justify-center space-x-3 bg-white text-black py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        <i class="fab fa-google"></i>
+                        <span>Continue with Google</span>
+                    </button>
+                    
+                    <div class="text-center text-gray-400">
+                        <span>or</span>
+                    </div>
+                </div>
+
+                <!-- Email Form -->
+                <form class="space-y-4">
+                    <div>
+                        <input type="email" placeholder="Email address" 
+                               class="w-full bg-dark-700 border border-dark-600 rounded-lg px-4 py-3 focus:outline-none focus:border-gold-400 transition-colors">
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Password" 
+                               class="w-full bg-dark-700 border border-dark-600 rounded-lg px-4 py-3 focus:outline-none focus:border-gold-400 transition-colors">
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-gradient-to-r from-gold-600 to-gold-400 text-black py-3 rounded-lg font-bold hover:from-gold-500 hover:to-gold-300 transition-all">
+                        Create Account & Get ₹500 Bonus
+                    </button>
+                </form>
+
+                <div class="text-center mt-6">
+                    <p class="text-sm text-gray-400">
+                        Already have an account? 
+                        <button class="text-gold-400 hover:text-gold-300 font-semibold">Sign in</button>
+                    </p>
+                </div>
+
+                <!-- Close Button -->
+                <button onclick="document.getElementById('authModal').classList.add('hidden')" 
+                        class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: AuthModal -->
+
+        <!-- Labs Section Preview (Phase 5) -->
+        <!-- @COMPONENT: LabsSection [hands-on cybersecurity exercises] -->
+        <section class="py-16 bg-dark-700 border-t border-dark-600">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-playfair font-bold mb-4">Hands-on <span class="text-gold-400">Security Labs</span></h2>
+                    <p class="text-gray-300">Practice in real-world cybersecurity environments</p>
+                    <div class="inline-flex items-center bg-gold-400/20 border border-gold-400 rounded-full px-4 py-2 mt-4">
+                        <i class="fas fa-flask text-gold-400 mr-2"></i>
+                        <span class="text-sm font-semibold">Coming Soon in Phase 5</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Network Penetration Lab -->
+                    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 card-hover">
+                        <div class="mb-4">
+                            <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-network-wired text-white"></i>
+                            </div>
+                            <span class="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">ADVANCED</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-mock="true">Network Penetration Testing</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-mock="true">Practice reconnaissance, exploitation, and post-exploitation techniques in a controlled environment.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-400">
+                                <i class="fas fa-clock mr-1"></i>
+                                2-3 hours
+                            </div>
+                            <button class="text-gold-400 hover:text-gold-300 font-semibold text-sm">
+                                Preview <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Web App Security Lab -->
+                    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 card-hover">
+                        <div class="mb-4">
+                            <div class="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-code text-white"></i>
+                            </div>
+                            <span class="bg-orange-600 text-white px-2 py-1 rounded text-xs font-bold">INTERMEDIATE</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-mock="true">Web Application Security</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-mock="true">Identify and exploit common web vulnerabilities including XSS, SQL injection, and CSRF.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-400">
+                                <i class="fas fa-clock mr-1"></i>
+                                1-2 hours
+                            </div>
+                            <button class="text-gold-400 hover:text-gold-300 font-semibold text-sm">
+                                Preview <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Malware Analysis Lab -->
+                    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 card-hover">
+                        <div class="mb-4">
+                            <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-bug text-white"></i>
+                            </div>
+                            <span class="bg-purple-600 text-white px-2 py-1 rounded text-xs font-bold">EXPERT</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-mock="true">Malware Analysis</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-mock="true">Reverse engineer malware samples using static and dynamic analysis techniques.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-400">
+                                <i class="fas fa-clock mr-1"></i>
+                                3-4 hours
+                            </div>
+                            <button class="text-gold-400 hover:text-gold-300 font-semibold text-sm">
+                                Preview <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Digital Forensics Lab -->
+                    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 card-hover">
+                        <div class="mb-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-search text-white"></i>
+                            </div>
+                            <span class="bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold">INTERMEDIATE</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-mock="true">Digital Forensics Investigation</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-mock="true">Investigate a simulated cyber crime scene and collect digital evidence.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-400">
+                                <i class="fas fa-clock mr-1"></i>
+                                2-3 hours
+                            </div>
+                            <button class="text-gold-400 hover:text-gold-300 font-semibold text-sm">
+                                Preview <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cloud Security Lab -->
+                    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 card-hover">
+                        <div class="mb-4">
+                            <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-cloud text-white"></i>
+                            </div>
+                            <span class="bg-green-600 text-white px-2 py-1 rounded text-xs font-bold">ADVANCED</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-mock="true">Cloud Security Assessment</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-mock="true">Audit AWS/Azure cloud configurations and identify security misconfigurations.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-400">
+                                <i class="fas fa-clock mr-1"></i>
+                                2-3 hours
+                            </div>
+                            <button class="text-gold-400 hover:text-gold-300 font-semibold text-sm">
+                                Preview <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Social Engineering Lab -->
+                    <div class="bg-dark-800 border border-dark-600 rounded-xl p-6 card-hover">
+                        <div class="mb-4">
+                            <div class="w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-user-secret text-white"></i>
+                            </div>
+                            <span class="bg-yellow-600 text-white px-2 py-1 rounded text-xs font-bold">BEGINNER</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-mock="true">Social Engineering Defense</h3>
+                        <p class="text-gray-400 text-sm mb-4" data-mock="true">Learn to identify and defend against social engineering attacks and phishing campaigns.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-400">
+                                <i class="fas fa-clock mr-1"></i>
+                                1 hour
+                            </div>
+                            <button class="text-gold-400 hover:text-gold-300 font-semibold text-sm">
+                                Preview <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: LabsSection -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 border-t border-dark-600 py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="text-2xl font-playfair font-bold text-gold-400 mb-4">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        CyberSecure Academy
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        India's premier cybersecurity training platform. Master the skills that protect the digital world.
+                    </p>
+                    <div class="flex space-x-4">
+                        <button class="w-10 h-10 bg-dark-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-gold-400 hover:bg-gold-400/20 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                        <button class="w-10 h-10 bg-dark-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-gold-400 hover:bg-gold-400/20 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </button>
+                        <button class="w-10 h-10 bg-dark-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-gold-400 hover:bg-gold-400/20 transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </button>
+                        <button class="w-10 h-10 bg-dark-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-gold-400 hover:bg-gold-400/20 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Courses -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Courses</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-gold-400 transition-colors" data-mock="true">Network Security</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors" data-mock="true">Ethical Hacking</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors" data-mock="true">Digital Forensics</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors" data-mock="true">Cloud Security</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors" data-mock="true">Incident Response</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Company</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div class="border-t border-dark-600 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    © 2023 CyberSecure Academy. All rights reserved.
+                </p>
+                <div class="flex items-center space-x-6">
+                    <span class="text-sm text-gray-400">Powered by cutting-edge technology</span>
+                    <div class="flex items-center space-x-2">
+                        <i class="fab fa-react text-blue-400"></i>
+                        <i class="fas fa-shield-alt text-gold-400"></i>
+                        <i class="fas fa-lock text-green-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 right-6 flex flex-col space-y-3 z-40">
+        <!-- Help/Support -->
+        <button class="w-12 h-12 bg-gold-400 text-black rounded-full flex items-center justify-center shadow-lg hover:bg-gold-300 transition-colors gold-glow">
+            <i class="fas fa-headset"></i>
+        </button>
+        
+        <!-- Back to Top -->
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+                class="w-12 h-12 bg-dark-700 border border-gold-400 text-gold-400 rounded-full flex items-center justify-center shadow-lg hover:bg-gold-400 hover:text-black transition-colors">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Simple JavaScript for Interactivity -->
+    <script>
+        (function() {
+            // TODO: Implement business logic, API calls, or state management
+            
+            // Show auth modal (demo functionality)
+            window.showAuthModal = function() {
+                document.getElementById('authModal').classList.remove('hidden');
+            };
+
+            // Smooth scrolling for carousel navigation
+            function initCarouselScroll() {
+                const carousels = document.querySelectorAll('.carousel-scroll');
+                carousels.forEach(carousel => {
+                    let isDown = false;
+                    let startX;
+                    let scrollLeft;
+
+                    carousel.addEventListener('mousedown', (e) => {
+                        isDown = true;
+                        startX = e.pageX - carousel.offsetLeft;
+                        scrollLeft = carousel.scrollLeft;
+                    });
+
+                    carousel.addEventListener('mouseleave', () => {
+                        isDown = false;
+                    });
+
+                    carousel.addEventListener('mouseup', () => {
+                        isDown = false;
+                    });
+
+                    carousel.addEventListener('mousemove', (e) => {
+                        if (!isDown) return;
+                        e.preventDefault();
+                        const x = e.pageX - carousel.offsetLeft;
+                        const walk = (x - startX) * 2;
+                        carousel.scrollLeft = scrollLeft - walk;
+                    });
+                });
+            }
+
+            // Initialize on DOM load
+            document.addEventListener('DOMContentLoaded', function() {
+                initCarouselScroll();
+                
+                // Add click handlers for CTA buttons
+                const ctaButtons = document.querySelectorAll('button');
+                ctaButtons.forEach(button => {
+                    if (button.textContent.includes('Claim') || button.textContent.includes('Get Certificate')) {
+                        button.addEventListener('click', showAuthModal);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
